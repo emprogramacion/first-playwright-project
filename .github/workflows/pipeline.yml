@@ -26,8 +26,8 @@ jobs:
         run: npm ci
 
       # 4️⃣ Instalar navegadores Playwright
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - name: Install Chromium Browser
+        run: npx playwright install chromium
 
       # 5️⃣ Ejecutar tests con Allure y capturas de fallos
       - name: Run Playwright Tests with Allure
