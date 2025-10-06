@@ -25,6 +25,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # 3.1️⃣ Instalar allure-playwright en el pipeline (sin tocar local)
+      - name: Install Allure Playwright
+        run: npm install --save-dev allure-playwright
+
       # 4️⃣ Instalar navegadores Playwright
       - name: Install Chromium Browser
         run: npx playwright install chromium
