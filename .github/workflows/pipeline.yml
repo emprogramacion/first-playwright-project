@@ -1,0 +1,56 @@
+name: CI Automation Tests
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  playwright-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout del repo
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3️⃣ Instalar dependencias del proyecto
+      - name: Install dependencies
+        run: npm ci
+
+      # 4️⃣ Instalar navegadores Playwright
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 5️⃣ Ejecutar tests con Allure y capturas de fallos
+      - name: Run Playwright Tests with Allure
+        run: |
+          npx playwright test \
+            --reporter=line,allure-playwright \
+            --max-failures=3 \
+            --quiet
+
+      # 6️⃣ Generar reporte HTML de Allure
+      - name: Generate Allure Report
+        run: npx allure generate allure-results --clean -o allure-report
+
+      # 7️⃣ Subir reporte como artifact
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+
+      # 8️⃣ Subir capturas de pantalla de fallos como artifact
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tests/captures
