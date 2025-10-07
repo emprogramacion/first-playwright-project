@@ -25,11 +25,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 3.1️⃣ Instalar allure-playwright en el pipeline (sin tocar local)
+      # 3️⃣.1️⃣ Instalar allure-playwright en el pipeline (sin tocar local)
       - name: Install Allure Playwright
         run: npm install --save-dev allure-playwright
 
-      # 4️⃣ Instalar navegadores Playwright
+      # 3️⃣.2️⃣ Instalar Allure CLI para generar reportes
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline
+
+      # 4️⃣ Instalar solo Chromium
       - name: Install Chromium Browser
         run: npx playwright install chromium
 
@@ -41,9 +45,9 @@ jobs:
             --max-failures=3 \
             --quiet
 
-      # 6️⃣ Generar reporte HTML de Allure
+      # 6️⃣ Generar reporte HTML de Allure usando CLI
       - name: Generate Allure Report
-        run: npx allure generate allure-results --clean -o allure-report
+        run: allure generate allure-results --clean -o allure-report
 
       # 7️⃣ Subir reporte como artifact
       - name: Upload Allure Report
