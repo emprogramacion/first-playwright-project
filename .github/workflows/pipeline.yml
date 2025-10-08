@@ -49,7 +49,7 @@ jobs:
       - name: Generate Allure Report
         run: allure generate allure-results --clean -o allure-report
 
-      # 7️⃣ Subir reporte como artifact (opcional, útil para descargarlo)
+      # 7️⃣ Subir reporte como artifact (opcional)
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
@@ -69,3 +69,12 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
+          publish_branch: gh-pages
+          allow_empty_commit: false
+          keep_files: false
+          force_orphan: false
+          enable_jekyll: false
+
+      # 🔟 Imprimir URL del reporte
+      - name: Show Allure Report URL
+        run: echo "Allure Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
