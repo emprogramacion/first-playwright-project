@@ -2,6 +2,12 @@
 
 - This is a Playwright project created to practicing along with the Tester Testarudo's course.
 
+Contenido:
+- 2 Tests sencillos.
+- Proyecto organizado con POM (Page Objects Models)
+- Pipeline con GitHub Actions
+- Deploy del reporte de Allure a GitHub Pages (Link generado)
+
 Playwright version 9.5.1
 TypeScript
 Visual Studio Code
