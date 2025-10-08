@@ -77,4 +77,5 @@ jobs:
 
       # 🔟 Imprimir URL del reporte
       - name: Show Allure Report URL
-        run: echo "Allure Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+        run: |
+          echo 'Allure Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/'
