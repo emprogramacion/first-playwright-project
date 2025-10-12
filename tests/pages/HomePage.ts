@@ -8,7 +8,7 @@ export class HomePage extends BasePage {
   constructor(page: Page) {
     super(page); // ✅ hereda de BasePage
     this.searchInput = page.getByPlaceholder("Search");
-    this.macBookLink = page.getByText("MacBook");
+    this.macBookLink = page.getByText("MacBook1");
   }
 
   async open() {
