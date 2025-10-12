@@ -11,7 +11,7 @@ test.describe("Suite de tests - OpenCart", () => {
     });
 
     await test.step("Realiza búsqueda de iPhone", async () => {
-      await homePage.searchProduct("Iphone");
+      await homePage.searchProduct("Hola");
       await page.pause();
     });
   });
