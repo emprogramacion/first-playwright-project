@@ -7,6 +7,7 @@ Contenido:
 - Proyecto organizado con POM (Page Objects Models)
 - Pipeline con GitHub Actions
 - Deploy del reporte de Allure a GitHub Pages (Link generado)
+- Pipeline con Jenkins: Ejecutado en Jenkins por medio del archivo Jenkinsfile que se encuentra en este repositorio
 
 Playwright version 9.5.1
 TypeScript
